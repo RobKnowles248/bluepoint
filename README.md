@@ -10,22 +10,30 @@ This project
 
 -   ### User stories
 
-    -   #### First Time Visitor Goals
+    -   #### Viewing and Navigation
 
-        1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the organisation.
-        2. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-        3. As a First Time Visitor, I want to look for testimonials to understand what their users think of them and see if they are trusted. I also want to locate their social media links to see their followings on social media to determine how trusted and known they are.
+        1. As a First Time Visitor, I want to easily understand the main purpose of the site so that I can decide if the site is for me.
+        2. As a site user, I want to be able to navigate easily to pages of the site, so that I can enjoy using the site.
 
-    -   #### Returning Visitor Goals
+    -   #### Registration and User Accounts
 
-        1. As a Returning Visitor, I want to find information about coding challenges.
-        2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
-        3. As a Returning Visitor, I want to find community links.
+        1. As a Site User, I want to be able to easily register for an account, so I can view my profile and log bluepoints.
+        2. As a Site User, I want to be able to easily login or logout, so I can access my profile and log bluepoints quickly.
+        3. As a Site User, I want to be able to easily recover my password if I forget it, so I am never locked out of my account.
+        4. As a Site User, I want to receive a confirmation email after registering, so that I can verify my registration was successful.
+        5. As a Site user, I want to have a logbook page, so that I can view and edit my existing bluepoints and personal details.
 
-    -   #### Frequent User Goals
-        1. As a Frequent User, I want to check to see if there are any newly added challenges or hackathons.
-        2. As a Frequent User, I want to check to see if there are any new blog posts.
-        3. As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
+    -   #### Logging Bluepoints
+        1. As a logged in user, I want to be able to log my bluepoints, so that I can add to my logbook of bluepoints.
+        2. As a logged in user, I want to be able to see other users logbooks, so that I can compare with mine.
+        3. As a logged in user, I want to be able to add other users as friends, so that I can keep up to date with my friends' blupeoints.
+
+    -   #### Donations
+        1. As a donor, I want to be able to read about the boltfund, so that I know what my money is going towards.
+        2. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
+        3. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
+        4. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
+        5. As a donor, I want to receive an email confirmation after donating, to keep the donation confirmation in my records.
 
 -   ### Design
     -   #### Colour Scheme
