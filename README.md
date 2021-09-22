@@ -2,7 +2,7 @@
 
 [View the live project here.]()
 
-This project 
+Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and [UKClimbing](https://www.ukclimbing.com/) where users create a logbook of outdoor climbs that they have completed. However, instead of logging successful climbs, users will log their successful belays of other climber's ascents. The term "bluepoint" is given to this by some climbers.
 
 <h2 align="center"></h2>
 
