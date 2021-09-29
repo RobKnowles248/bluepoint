@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # custom
     'home',
+    'logbooks',
 
     # allauth
     'allauth',
