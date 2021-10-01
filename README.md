@@ -45,11 +45,9 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 
 *   ### Wireframes
 
-    -   Home Page Wireframe - [View]()
+    -   Home Page Wireframe - [View](wireframes/home-page.pdf)
 
-    -   User Logbook Wireframe - [View]()
-
-    -   Donation Page Wireframe - [View]()
+    -   User Logbook Wireframe - [View](wireframes/logbook-page.pdf)
 
 ## Features
 
