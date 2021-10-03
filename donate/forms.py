@@ -17,11 +17,11 @@ class DonationForm(forms.ModelForm):
         Add placeholders
         """
         super().__init__(*args, **kwargs)
-        placeholders = (
+        placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
             'donation_amount': 'Donation Amount',
-        )
+        }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
