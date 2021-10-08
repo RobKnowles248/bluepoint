@@ -16,8 +16,12 @@
                     </fieldset>
                     <fieldset class="mb-2">
                         <legend class="fieldset-label small">Payment</legend>
-                        <div class="mb-2" id="card-element"></div>
-                        <div class="mb-2 text-danger" id="card-errors"></div>
+                        <div class="mb-2" id="card-element">
+                            <!-- Stripe will create a card element here -->
+                        </div>
+                        <div class="mb-2 text-danger" id="card-errors" role="alert">
+                            <!-- Stipe error messages will displya here -->
+                        </div>
                     </fieldset>
                     <div class="submit-button-container mt-4 mb-2 text-right">
                         <button id="submit-button" class="btn btn-black">
@@ -28,4 +32,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"client_secret" }}
+    <script src="{% static 'donate/js/stripe_elements.js' %}"></script>
 {% endblock %}

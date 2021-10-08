@@ -29,6 +29,14 @@ body {
     vertical-align: middle;
 }
 
+.navbar-toggler {
+    border-radius: 0;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
 /*------------ Media Queries --*/
 
 @media only screen and (min-width: 992px) {
