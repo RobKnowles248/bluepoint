@@ -2,6 +2,27 @@ html {
     height: 100%;
 }
 
+/* ----------- Colours --*/
+
 .bg-blue {
     background-color: #163a9c;
+}
+
+/*------------ Navbar --*/
+
+.navbar-brand.logo {
+    padding: 0;
+    line-height: 40px;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+/*------------ Media Queries --*/
+
+@media only screen and (min-width: 992px) {
+
+    .navbar {
+        height: 60px;
+    }
+
 }
