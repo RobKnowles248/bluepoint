@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 
 from .forms import DonationForm
@@ -37,23 +37,43 @@ def pay(request, donation_number):
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    donation = get_object_or_404(Donation, donation_number=donation_number)
 
-    donation = Donation.objects.get(donation_number=donation_number)
-    donation_amount = donation.donation_amount
-    stripe_amount = round(donation_amount * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_amount,
-        currency=settings.STRIPE_CURRENCY,
-    )
+    if request.method == 'POST':
+        donation.paid = True
+        donation.save()
+        return redirect(reverse('payment_success', args=[donation.donation_number]))
 
-    print(intent)
+    else:
+        donation_amount = donation.donation_amount
+        stripe_amount = round(donation_amount * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_amount,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
-    template = 'donate/pay.html'
+        print(intent)
+
+        template = 'donate/pay.html'
+        context = {
+            'donation_number': donation_number,
+            'stripe_public_key': stripe_public_key,
+            'client_secret': intent.client_secret,
+        }
+
+        return render(request, template, context)
+
+
+def payment_success(request, donation_number):
+    """
+    Handle successful payments
+    """
+    donation = get_object_or_404(Donation, donation_number=donation_number)
+    # Add success message here
+
+    template = 'donate/payment_success.html'
     context = {
-        'donation_number': donation_number,
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
+        'donation': donation,
     }
-
     return render(request, template, context)
