@@ -14,6 +14,7 @@ class Donation(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     donation_amount = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
+    paid = models.BooleanField(null=False, blank=False, default=False)
 
     def _generate_donation_number(self):
         """
@@ -28,6 +29,8 @@ class Donation(models.Model):
         """
         if not self.donation_number:
             self.donation_number = self._generate_donation_number()
+        if not self.paid:
+            self.paid = False
         super().save(*args, **kwargs)
 
     def __str__(self):
