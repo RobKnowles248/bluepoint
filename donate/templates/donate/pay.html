@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <p>Pay securely here:</p>
-                <form action="{% url 'donate' %}" method="POST" id='payment-form'>
+                <form action="{% url 'pay' donation_number=donation_number %}" method="POST" id='payment-form'>
                     {% csrf_token %}
                     <div class="mb-2" id="card-element">
                         <!-- Stripe will create a card element here -->
