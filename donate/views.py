@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.conf import settings
 
 from .forms import DonationForm
+
+import stripe
 
 
 def donate(request):
@@ -11,8 +14,32 @@ def donate(request):
     template = 'donate/donate.html'
     context = {
         'donation_form': donation_form,
-        'stripe_public_key': 'pk_test_51JLphqKpMBPEAF4Mc730BMeFYr4He6G6FWFQTC9D3T61biArtAStuEVpGtWXwlmpJKxAby2h3lCXMWDyPYB90SeE00Gcios0SJ',
-        'client_secret': 'test client secret'
+    }
+
+    return render(request, template, context)
+
+
+def pay(request):
+    """
+    A view for rendering the payment page
+    """
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    donation_amount = 12.99
+    stripe_amount = round(donation_amount * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_amount,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    print(intent)
+
+    template = 'donate/pay.html'
+    context = {
+        'stripe_public_key': stripe_public_key,
+        'client_secret': stripe_secret_key,
     }
 
     return render(request, template, context)

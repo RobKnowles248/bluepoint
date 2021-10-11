@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <p>Pay securely here:</p>
+                <form action="{% url 'donate' %}" method="POST" id='payment-form'>
+                    {% csrf_token %}
+                    <div class="mb-2" id="card-element">
+                        <!-- Stripe will create a card element here -->
+                    </div>
+                    <div class="mb-2 text-danger" id="card-errors" role="alert">
+                        <!-- Stipe error messages will display here -->
+                    </div>
+                    <div class="submit-button-container mt-4 mb-2 text-right">
+                        <button id="submit-button" class="btn btn-black">
+                            <span>Pay <i class="fas fa-lock"></i></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"client_secret" }}
+    <script src="{% static 'donate/js/stripe_elements.js' %}"></script>
+{% endblock %}
