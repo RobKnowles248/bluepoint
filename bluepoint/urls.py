@@ -23,4 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('donate/', include('donate.urls')),
+    path('logbook/', include('logbooks.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

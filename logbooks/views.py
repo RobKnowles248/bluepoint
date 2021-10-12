@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def logbook(request):
+    """
+    Display the user's logbook
+    """
+    template = 'logbooks/logbook.html'
+    context = {}
+
+    return render(request, template, context)
