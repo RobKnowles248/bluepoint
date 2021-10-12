@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
+from django.contrib import messages
 
 from .forms import DonationForm
 from .models import Donation
@@ -21,6 +22,8 @@ def donate(request):
         if donation_form.is_valid():
             donation = donation_form.save()
             return redirect(reverse('pay', args=[donation.donation_number]))
+        else:
+            messages.error(request, 'Please check your details')
     else:
         donation_form = DonationForm()
         template = 'donate/donate.html'
@@ -42,7 +45,8 @@ def pay(request, donation_number):
     if request.method == 'POST':
         donation.paid = True
         donation.save()
-        return redirect(reverse('payment_success', args=[donation.donation_number]))
+        return redirect(reverse(
+            'payment_success', args=[donation.donation_number]))
 
     else:
         donation_amount = donation.donation_amount
@@ -70,7 +74,7 @@ def payment_success(request, donation_number):
     Handle successful payments
     """
     donation = get_object_or_404(Donation, donation_number=donation_number)
-    # Add success message here
+    messages.success(request, 'Payment successful!')
 
     template = 'donate/payment_success.html'
     context = {
