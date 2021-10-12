@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="heading-font text-center">Donate</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p>Please fill out the form below to donate to the development of this site</p>
+                <p class="text-center">Please fill out the form below to donate to the development of this site</p>
                 <form action="{% url 'donate' %}" method="POST" id='donation-form'>
                     {% csrf_token %}
                     {{ donation_form.full_name | as_crispy_field }}

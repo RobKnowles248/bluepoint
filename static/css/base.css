@@ -55,6 +55,12 @@ ul.messages li {
     background-color: #dc3545!important;
 }
 
+/*------------ Page Header --*/
+
+hr {
+    border-color: rgba(0,0,0,.4);
+}
+
 /*------------ Media Queries --*/
 
 @media only screen and (min-width: 992px) {

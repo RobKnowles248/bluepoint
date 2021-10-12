@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="heading-font text-center">Donation Successful!</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p>Thank you for donating to the development of the site.</p>
+                <p class="text-center">Thank you for donating to the development of the site.</p>
             </div>
         </div>
     </div>
