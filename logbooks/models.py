@@ -28,6 +28,7 @@ class Bluepoint(models.Model):
         max_length=3, choices=GRADES, null=False, blank=False)
     user = models.ForeignKey(
         'Logbook', null=False, blank=False, on_delete=models.CASCADE)
+    comment = models.TextField(blank=True)
 
 
 @receiver(post_save, sender=User)
