@@ -8,4 +8,4 @@ class BluepointForm(forms.ModelForm):
     """
     class Meta:
         model = Bluepoint
-        exclude = ('user',)
+        fields = '__all__'

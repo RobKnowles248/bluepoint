@@ -26,12 +26,12 @@ def donate(request):
             messages.error(request, 'Please check your details')
     else:
         donation_form = DonationForm()
-        template = 'donate/donate.html'
-        context = {
-            'donation_form': donation_form,
-        }
+    template = 'donate/donate.html'
+    context = {
+        'donation_form': donation_form,
+    }
 
-        return render(request, template, context)
+    return render(request, template, context)
 
 
 def pay(request, donation_number):
