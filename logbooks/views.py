@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
 
 from .models import Logbook
 
@@ -20,3 +21,17 @@ def logbook(request, user_id):
     }
 
     return render(request, template, context)
+
+
+def add_bluepoint(request):
+    """
+    Add a new bluepoint to your logbook
+    """
+    if request.user.is_authenticated:
+        template = 'logbooks/add_bluepoint.html'
+        context = {}
+
+        return render(request, template, context)
+    else:
+        messages.info(request, 'Please log in to add a bluepoint')
+        redirect(reverse('account_login'))

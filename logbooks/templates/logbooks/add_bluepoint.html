@@ -5,7 +5,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
-                <h2 class="heading-font text-center">Donate</h2>
+                <h2 class="heading-font text-center">Log Bluepoint</h2>
                 <hr>
             </div>
         </div>
@@ -16,15 +16,12 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p class="text-center">Please fill out the form below to donate to the development of this site</p>
+                <p class="text-center"></p>
                 <form action="{% url 'donate' %}" method="POST" id='donation-form'>
                     {% csrf_token %}
-                    {{ donation_form.full_name | as_crispy_field }}
-                    {{ donation_form.email | as_crispy_field }}
-                    {{ donation_form.donation_amount | as_crispy_field }}
                     <div class="submit-button-container mt-4 mb-2 text-center">
                         <button id="submit-button" class="btn btn-black">
-                            <span>Donate <i class="fas fa-donate"></i></span>
+                            <span>Log Bluepoint <i class="fas fa-add"></i></span>
                         </button>
                     </div>
                 </form>
