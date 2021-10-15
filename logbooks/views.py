@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 
 from .models import Logbook
+from .forms import BluepointForm
 
 
 def logbook(request, user_id):
@@ -28,8 +29,11 @@ def add_bluepoint(request):
     Add a new bluepoint to your logbook
     """
     if request.user.is_authenticated:
+        form = BluepointForm
         template = 'logbooks/add_bluepoint.html'
-        context = {}
+        context = {
+            'form': form,
+        }
 
         return render(request, template, context)
     else:

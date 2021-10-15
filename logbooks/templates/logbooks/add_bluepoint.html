@@ -17,11 +17,12 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <p class="text-center"></p>
-                <form action="{% url 'donate' %}" method="POST" id='donation-form'>
+                <form action="{% url 'add_bluepoint' %}" method="POST" id='bluepoint-form'>
                     {% csrf_token %}
+                    {{ form|crispy }}
                     <div class="submit-button-container mt-4 mb-2 text-center">
                         <button id="submit-button" class="btn btn-black">
-                            <span>Log Bluepoint <i class="fas fa-add"></i></span>
+                            <span>Log Bluepoint <i class="fas fa-plus"></i></span>
                         </button>
                     </div>
                 </form>
