@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               {% if request.user.is_authenticated %}
-                <li class="nav-item mr-4"><a href="" class="nav-link"><i class="fa fa-book"></i> My Logbook</a></li>
+                <li class="nav-item mr-4"><a href="{% url 'logbook' user_id='my' %}" class="nav-link"><i class="fa fa-book"></i> My Logbook</a></li>
                 <li class="nav-item mr-4"><a href="" class="nav-link"><i class="fas fa-plus"></i> Log Bluepoint</a></li>
                 <li class="nav-item mr-4"><a href="{% url 'account_logout' %}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
               {% else %}
