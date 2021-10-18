@@ -4,8 +4,6 @@
 
 Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and [UKClimbing](https://www.ukclimbing.com/) where users create a logbook of outdoor climbs that they have completed. However, instead of logging successful climbs, users will log their successful belays of other climber's ascents. The term "bluepoint" is given to this by some climbers.
 
-<h2 align="center"></h2>
-
 ## User Experience (UX)
 
 -   ### User stories
@@ -67,17 +65,21 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
     - Bootstrap was used to assist with the responsiveness and styling of the website.
 1. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts were used to import the 'Titillium Web' font into the style.css file which is used on all pages throughout the project.
+    - Google fonts were used to import the 'Roboto' and 'Nunito' fonts for use across the site.
 1. [Font Awesome:](https://fontawesome.com/)
-    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
+    - Font Awesome was used for icons across the site.
 1. [jQuery:](https://jquery.com/)
-    - jQuery came with Bootstrap to make the navbar responsive but was also used for the smooth scroll function in JavaScript.
+    - jQuery came with Bootstrap to make the navbar responsive but was used in much of the javascript.
 1. [Git](https://git-scm.com/)
-    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+    - Git was used for version control.
 1. [GitHub:](https://github.com/)
-    - GitHub is used to store the projects code after being pushed from Git.
+    - GitHub was used to store the projects code after being pushed from Git.
 1. [Balsamiq:](https://balsamiq.com/)
-    - Balsamiq was used to create the [wireframes](https://github.com/) during the design process.
+    - Balsamiq was used to create the wireframes during the design process.
+1. [Django](https://www.djangoproject.com/)
+    - Django was the framework used to build the site.
+1. [Django-allauth](https://django-allauth.readthedocs.io/en/latest/index.html)
+    - Django-allauth was used on the authentication pages on the site.
 
 ## Testing
 
@@ -104,4 +106,4 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Acknowledgements
 
--   My Mentor for continuous helpful feedback.
+-   My Mentor Akshat Garg for continuous helpful feedback.
