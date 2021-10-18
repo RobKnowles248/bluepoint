@@ -1,14 +1,17 @@
 def get_grades_dict():
+    """
+    Return a reverse orders dictionary of grades with empty lists attached
+    """
     grades_dict = {}
-    letters = ['a', 'b', 'c']
-    for i in range(1, 10):
+    letters = ['c', 'b', 'a']
+    for i in range(10, 0, -1):
         if i < 6:
-            grades_dict[str(i)] = []
             grades_dict[str(i) + '+'] = []
+            grades_dict[str(i)] = []
         else:
             for letter in letters:
-                grades_dict[str(i) + letter] = []
                 grades_dict[str(i) + letter + '+'] = []
+                grades_dict[str(i) + letter] = []
     return grades_dict
 
 
