@@ -55,6 +55,28 @@ ul.messages li {
     background-color: #dc3545!important;
 }
 
+/*------------ Buttons --*/
+
+button,
+button.btn,
+a.btn {
+    background-color: #757575;
+    color: white;
+    border-radius: 25px;
+    height: 50px;
+    font-size: 20px;
+    padding: 6px 20px;
+    text-decoration: none;
+    border: none;
+}
+
+button:hover,
+button.btn:hover,
+a.btn:hover {
+    color: white;
+    background-color: #494949;
+}
+
 /*------------ Page Header --*/
 
 hr {
