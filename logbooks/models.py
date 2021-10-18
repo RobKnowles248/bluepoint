@@ -25,7 +25,7 @@ class Bluepoint(models.Model):
     crag_name = models.CharField(max_length=254, null=False, blank=False)
     GRADES = get_grades_tuple()
     grade = models.CharField(
-        max_length=3, choices=GRADES, null=False, blank=False)
+        max_length=4, choices=GRADES, null=False, blank=False)
     user = models.ForeignKey(
         'Logbook', null=False, blank=False, on_delete=models.CASCADE)
     comment = models.TextField(blank=True)
