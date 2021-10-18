@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 
-from .models import Logbook
+from .models import Logbook, Bluepoint
 from .forms import BluepointForm
+from .functions import sort_bluepoints
 
 
 def logbook(request, user_id):
@@ -15,10 +16,13 @@ def logbook(request, user_id):
     else:
         logbook = get_object_or_404(Logbook, user_id=user_id)
         my_logbook = False
+    bluepoints = Bluepoint.objects.all().filter(user=logbook)
+    sorted_bluepoints = sort_bluepoints(bluepoints)
     template = 'logbooks/logbook.html'
     context = {
         'logbook': logbook,
         'my_logbook': my_logbook,
+        'sorted_bluepoints': sorted_bluepoints,
     }
 
     return render(request, template, context)
