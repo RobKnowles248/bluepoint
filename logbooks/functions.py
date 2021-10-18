@@ -19,7 +19,7 @@ def get_grades_tuple():
     """
     Function to retrieve list of grades formatted for model
     """
-    # Get an array of climbing grades
+    # Get a list of climbing grades
     grades = []
     letters = ['a', 'b', 'c']
     for i in range(1, 10):
@@ -30,6 +30,7 @@ def get_grades_tuple():
             for letter in letters:
                 grades.append((str(i) + letter, str(i) + letter))
                 grades.append((str(i) + letter + '+', str(i) + letter + '+'))
+    # Convert list to tuple
     grades_tuple = tuple(grades)
     return grades_tuple
 
@@ -39,6 +40,7 @@ def sort_bluepoints(bluepoints):
     Sorts a list of bluepoints to return a dictionary of bluepoints by grade
     in the correct order
     """
+    # Add bluepoint objects to their corresponding grade in the dict
     grades_dict = get_grades_dict()
     for bluepoint in bluepoints:
         for key in grades_dict:
@@ -50,6 +52,7 @@ def sort_bluepoints(bluepoints):
                     'comment': bluepoint.comment,
                 }
                 grades_dict[key].append(bluepoint_object)
+    # Remove entries for empty grades
     empty_grades = []
     for key in grades_dict:
         if len(grades_dict[key]) == 0:
