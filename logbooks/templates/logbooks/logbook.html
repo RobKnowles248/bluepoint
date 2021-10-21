@@ -5,7 +5,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
-                <h2 class="heading-font text-center">{% if my_logbook %}My Logbook{% else %}{{ logbook }}{% endif %}</h2>
+                <h2 class="heading-font text-center">{% if my_logbook %}My Logbook{% else %}{{ logbook }}'s Logbook{% endif %}</h2>
                 <hr>
             </div>
         </div>
@@ -16,10 +16,36 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-lg-4">
-                {{ logbook }}
+                <h4 class="heading-font">Pyramid</h2>
+                {{ logbook.user.username }}
+                {{ request.user }}
             </div>
             <div class="col-12 col-lg-8">
-                <ul>
+                <h4 class="heading-font">Logs</h4>
+                {{ sorted_bluepoints }}
+                <ul class="list-group">
+                    {% for grade, bluepoints in sorted_bluepoints.items %}
+                        <li class="list-group-item bg-blue text-white text-center">{{ grade }}</li>
+                        {% for bluepoint in bluepoints %}
+                            <li class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-lg-3 text-center">
+                                        <h5 class="mb-0 font-bold">{{ bluepoint.route_name }}</h5>
+                                        <p>{{ bluepoint.crag_name }}</p>
+                                    </div>
+                                    <div class="col-12 {% if my_logbook %}col-lg-6{% else %}col-lg-9{% endif %} text-center">
+                                        <p>{{ bluepoint.comment }}</p>
+                                    </div>
+                                    {% if my_logbook %}
+                                    <div class="col-12 col-lg-3 text-center">
+                                        <a href="" class="btn btn-small mb-lg-2">Edit</a>
+                                        <a href="" class="btn btn-small btn-danger">Delete</a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>

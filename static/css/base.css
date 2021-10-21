@@ -14,10 +14,18 @@ body {
     background-color: #163a9c;
 }
 
+.text-white {
+    color: #fff;
+}
+
 /*----------- Fonts --*/
 
 .heading-font {
     font-family: "Nunito", sans-serif;
+}
+
+.font-bold {
+    font-weight: bold;
 }
 
 /*------------ Navbar --*/
@@ -75,6 +83,17 @@ button.btn:hover,
 a.btn:hover {
     color: white;
     background-color: #494949;
+}
+
+.btn-blue {
+    background-color: #163a9c;
+}
+
+.btn.btn-small {
+    height: 30px;
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 15px;
 }
 
 /*------------ Page Header --*/
