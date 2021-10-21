@@ -78,6 +78,10 @@ a.btn {
     border: none;
 }
 
+a.btn {
+    line-height: 35px;
+}
+
 button:hover,
 button.btn:hover,
 a.btn:hover {
@@ -85,7 +89,7 @@ a.btn:hover {
     background-color: #494949;
 }
 
-.btn-blue {
+.btn.btn-blue {
     background-color: #163a9c;
 }
 

@@ -60,3 +60,31 @@ def sort_bluepoints(bluepoints):
     for grade in empty_grades:
         grades_dict.pop(grade)
     return grades_dict
+
+
+def get_max_number_of_grade(sorted_bluepoints):
+    """
+    Get the max number of bluepoints at any grade for a user
+    """
+    max_number_of_grade = 0
+    for bluepoints in sorted_bluepoints.values():
+        if len(bluepoints) > max_number_of_grade:
+            max_number_of_grade = len(bluepoints)
+    return max_number_of_grade
+
+
+def get_numbers_of_each_grade(sorted_bluepoints, max_number_of_grade):
+    """
+    Get a dictionary of the number of bluepoints at each grade
+    plus the percentage of the that number compared to the max
+    number at any grade
+    """
+    numbers_of_each_grade = {}
+    for grade, bluepoints in sorted_bluepoints.items():
+        number_of_bluepoints = len(bluepoints)
+        percentage_of_max = (number_of_bluepoints * 100) // max_number_of_grade
+        numbers_of_each_grade[grade] = {
+            'number_of_bluepoints': number_of_bluepoints,
+            'percentage_of_max': percentage_of_max,
+        }
+    return numbers_of_each_grade

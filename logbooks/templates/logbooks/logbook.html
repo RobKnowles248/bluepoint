@@ -16,13 +16,23 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-lg-4">
-                <h4 class="heading-font">Pyramid</h2>
-                {{ logbook.user.username }}
-                {{ request.user }}
+                <h4 class="heading-font text-center">Pyramid</h4>
+                <hr>
+                {% for grade, values in numbers_of_each_grade.items %}
+                    <div class="row">
+                        <div class="col-2 text-right">{{ grade }}:</div>
+                        <div class="col-10">
+                            <div class="progress">
+                                <div class="progress-bar bg-blue w-{{ values.percentage_of_max }}" role="progressbar" aria-valuenow="{{ values.number_of_bluepoints }}" aria-valuemin="0" aria-valuemax="{{ max_number_of_grade }}" >{{ values.number_of_bluepoints }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <hr class="lg-hide">
             </div>
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-8 text-center">
                 <h4 class="heading-font">Logs</h4>
-                {{ sorted_bluepoints }}
+                <hr>
                 <ul class="list-group">
                     {% for grade, bluepoints in sorted_bluepoints.items %}
                         <li class="list-group-item bg-blue text-white text-center">{{ grade }}</li>
@@ -47,6 +57,7 @@
                         {% endfor %}
                     {% endfor %}
                 </ul>
+                <a href="{% url 'add_bluepoint' %}" class="btn mt-4 mb-4 btn-blue"><i class="fas fa-plus"></i> Log New Bluepoint</a>
             </div>
         </div>
     </div>
