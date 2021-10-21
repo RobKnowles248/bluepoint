@@ -50,6 +50,7 @@ def sort_bluepoints(bluepoints):
                     'crag_name': bluepoint.crag_name,
                     'grade': bluepoint.grade,
                     'comment': bluepoint.comment,
+                    'id': bluepoint.id,
                 }
                 grades_dict[key].append(bluepoint_object)
     # Remove entries for empty grades

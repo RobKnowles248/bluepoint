@@ -5,7 +5,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
-                <h2 class="heading-font text-center">Log Bluepoint</h2>
+                <h2 class="heading-font text-center">Edit Bluepoint</h2>
                 <hr>
             </div>
         </div>
@@ -17,14 +17,14 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <p class="text-center"></p>
-                <form action="{% url 'add_bluepoint' %}" method="POST" id='bluepoint-form'>
+                <form action="{% url 'edit_bluepoint' bluepoint.id %}" method="POST" id='bluepoint-form'>
                     {% csrf_token %}
                     {{ form.route_name | as_crispy_field }}
                     {{ form.crag_name | as_crispy_field }}
                     {{ form.grade | as_crispy_field }}
                     {{ form.comment | as_crispy_field }}
                     <div class="text-center mb-4">
-                        <button class="btn btn-black" type="submit">Log Bluepoint <i class="fas fa-plus"></i></button>
+                        <button class="btn btn-black" type="submit">Update Bluepoint <i class="fas fa-plus"></i></button>
                     </div>
                 </form>
             </div>

@@ -47,7 +47,6 @@ def add_bluepoint(request):
                 'comment': request.POST['comment'],
                 'user': logbook,
             }
-            print(form_data)
             form = BluepointForm(form_data)
             if form.is_valid():
                 form.save()
@@ -66,3 +65,57 @@ def add_bluepoint(request):
     else:
         messages.info(request, 'Please log in to add a bluepoint')
         return redirect(reverse('account_login'))
+
+
+def edit_bluepoint(request, bluepoint_id):
+    """
+    Edit a bluepoint
+    """
+    if request.user.is_authenticated:
+        bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
+        user_logbook = get_object_or_404(Logbook, user=request.user)
+        bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
+        if bluepoint in bluepoints:
+            if request.method == 'POST':
+                form_data = {
+                    'route_name': request.POST['route_name'],
+                    'crag_name': request.POST['crag_name'],
+                    'grade': request.POST['grade'],
+                    'comment': request.POST['comment'],
+                    'user': user_logbook,
+                }
+                form = BluepointForm(
+                    form_data, request.FILES, instance=bluepoint)
+                if form.is_valid():
+                    form.save()
+                    messages.success(
+                        request, 'Successfully updated bluepoint!')
+                    return redirect(reverse('logbook', args=['my']))
+                else:
+                    messages.error(
+                        request, 
+                        'Failed to update bluepoint. Please check the form!'
+                    )
+            else:
+                form = BluepointForm(instance=bluepoint)
+                messages.info(
+                    request, 
+                    f'You are editing your bluepoint of {bluepoint.route_name}'
+                )
+
+            template = 'logbooks/edit_bluepoint.html'
+            context = {
+                'form': form,
+                'bluepoint': bluepoint,
+            }
+
+            return render(request, template, context)
+        else:
+            messages.error(
+                request, 'You do not have permission to edit that bluepoint!')
+            return redirect(reverse('account_login'))
+    else:
+        messages.error(
+            request, 'You are not logged in!'
+        )
+        return redirect(reverse('home'))
