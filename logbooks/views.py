@@ -113,9 +113,32 @@ def edit_bluepoint(request, bluepoint_id):
         else:
             messages.error(
                 request, 'You do not have permission to edit that bluepoint!')
-            return redirect(reverse('account_login'))
+            return redirect(reverse('home'))
     else:
         messages.error(
             request, 'You are not logged in!'
         )
-        return redirect(reverse('home'))
+        return redirect(reverse('account_login'))
+
+
+def delete_bluepoint(request, bluepoint_id):
+    """
+    Edit a bluepoint
+    """
+    if request.user.is_authenticated:
+        bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
+        user_logbook = get_object_or_404(Logbook, user=request.user)
+        bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
+        if bluepoint in bluepoints:
+            bluepoint.delete()
+            messages.success(request, 'Bluepoint successfully deleted!')
+            return redirect(reverse('logbook', args=['my']))
+        else:
+            messages.error(
+                request, 'You do not have permission to delete that bluepoint!')
+            return redirect(reverse('home'))
+    else:
+        messages.error(
+            request, 'You are not logged in!'
+        )
+        return redirect(reverse('account_login'))
