@@ -29,6 +29,7 @@ class Bluepoint(models.Model):
     user = models.ForeignKey(
         'Logbook', null=False, blank=False, on_delete=models.CASCADE)
     comment = models.TextField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
 
 
 @receiver(post_save, sender=User)
