@@ -1,0 +1,1 @@
+web: gunicorn bluepoint-rob.wsgi:application

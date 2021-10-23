@@ -80,6 +80,8 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
     - Django was the framework used to build the site.
 1. [Django-allauth](https://django-allauth.readthedocs.io/en/latest/index.html)
     - Django-allauth was used on the authentication pages on the site.
+1. [Heroku]()
+    - Heroku was used to deploy the app.
 
 ## Testing
 
@@ -95,6 +97,28 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 ### Known Bugs
 
 ## Deployment
+
+The site was deployed using the following steps:
+
+1. Created a new app on Heroku called 'bluepoint-rob' in the European region.
+
+2. Provisioned a new Postgres database in the resources tab on the Heroku dashboard.
+
+3. Used pip to install dj_database_url and psycopg2-binary to the development environment
+
+4. Imported dj_database_url in settings.py and replaced the default database with a call to `dj_database_url.parse(url)` with the database url being the one for our new Postgres database in our config vars in Heroku.
+
+5. Ran the migrations on the new database and created a superuser.
+
+6. Added an if statement to settings.py to decide which database to connect to depending on the environment variables.
+
+7. Installed gunicorn using pip as our webserver.
+
+8. Created a Procfile to tell Heroku to create a web dyno which will run gunicorn
+
+9. Logged in to the Heroku CLI and ran `heroku config:set DISABLE_COLLECTSTATIC=1 --app <app_name>` to stop Heroku trying to collect the static files when we deploy.
+
+10. Added the Heroku app hostname to allowed hosts in settings.py
 
 ## Credits
 
