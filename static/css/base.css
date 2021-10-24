@@ -67,7 +67,8 @@ ul.messages li {
 
 button,
 button.btn,
-a.btn {
+a.btn,
+input[type="submit"] {
     background-color: #757575;
     color: white;
     border-radius: 25px;
@@ -84,7 +85,8 @@ a.btn {
 
 button:hover,
 button.btn:hover,
-a.btn:hover {
+a.btn:hover,
+input[type="submit"]:hover {
     color: white;
     background-color: #494949;
 }
