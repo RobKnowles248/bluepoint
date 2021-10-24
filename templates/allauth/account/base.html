@@ -14,8 +14,12 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container mt-3 all-auth-content">
-    {% block inner_content %}
-    {% endblock %}
+  <div class="container mt-3 all-auth-content text-center">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6">
+        {% block inner_content %}
+        {% endblock %}
+      </div>
+    </div>
   </div>
 {% endblock %}

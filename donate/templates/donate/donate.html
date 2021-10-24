@@ -14,9 +14,9 @@
 
 {% block content %}
     <div class="container mt-3">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
-                <p class="text-center">Please fill out the form below to donate to the development of this site</p>
+                <p>Please fill out the form below to donate to the development of this site</p>
                 <form action="{% url 'donate' %}" method="POST" id='donation-form'>
                     {% csrf_token %}
                     {{ donation_form.full_name | as_crispy_field }}
