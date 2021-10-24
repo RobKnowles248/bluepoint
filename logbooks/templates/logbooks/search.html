@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="heading-font text-center">Search Results for "{{ query }}"</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                {% if users|length == 0 %}
+                    <p class="text-center">No users found matching that query!</p>
+                {% else %}
+                    <ul class="list-group text-center">
+                        {% for user in users %}
+                            <li class="list-group-item">
+                                <a href="{% url 'logbook' user_id=user.id %}">{{ user.username }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.db.models import Q
+from django.contrib.auth.models import User
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
@@ -142,3 +144,26 @@ def delete_bluepoint(request, bluepoint_id):
             request, 'You are not logged in!'
         )
         return redirect(reverse('account_login'))
+
+
+def search(request):
+    """
+    A view to display logbook search results
+    """
+    query = None
+    if request.GET:
+        if 'query' in request.GET:
+            query = request.GET['query']
+    if not query:
+        messages.error(request, "You didn't enter any search criteria!")
+        return redirect(reverse('home'))
+    # queries = Q(user__icontains=query)
+    users = User.objects.filter(username__contains=query)
+
+    template = 'logbooks/search.html'
+    context = {
+        'users': users,
+        'query': query
+    }
+
+    return render(request, template, context)
