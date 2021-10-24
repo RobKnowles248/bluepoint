@@ -27,11 +27,10 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
         3. As a logged in user, I want to be able to add other users as friends, so that I can keep up to date with my friends' blupeoints.
 
     -   #### Donations
-        1. As a donor, I want to be able to read about the boltfund, so that I know what my money is going towards.
-        2. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
-        3. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
-        4. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
-        5. As a donor, I want to receive an email confirmation after donating, to keep the donation confirmation in my records.
+        1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
+        2. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
+        3. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
+        4. As a donor, I want to receive an email confirmation after donating, to keep the donation confirmation in my records.
 
 -   ### Design
     -   #### Colour Scheme
@@ -80,8 +79,10 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
     - Django was the framework used to build the site.
 1. [Django-allauth](https://django-allauth.readthedocs.io/en/latest/index.html)
     - Django-allauth was used on the authentication pages on the site.
-1. [Heroku]()
+1. [Heroku](https://www.heroku.com/)
     - Heroku was used to deploy the app.
+1. [AWS](https://www.aws.amazon.com/)
+    - AWS S3 was used to store the static files of the app.
 
 ## Testing
 
@@ -118,7 +119,15 @@ The site was deployed using the following steps:
 
 9. Logged in to the Heroku CLI and ran `heroku config:set DISABLE_COLLECTSTATIC=1 --app <app_name>` to stop Heroku trying to collect the static files when we deploy.
 
-10. Added the Heroku app hostname to allowed hosts in settings.py
+10. Added the Heroku app hostname to allowed hosts in settings.py.
+
+11. Ran `heroku git:remote -a bluepoint-rob` to set up the git remote.
+
+12. Commit and pushed any changes then ran `git push heroku master`
+
+13. In the deploy tab in the Heroku dashboard, connected the app to our github repository and enabled automatic deploys.
+
+14. An AWS S3 bucket was created and setup to store the static files of the app.
 
 ## Credits
 
