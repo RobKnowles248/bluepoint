@@ -25,7 +25,16 @@
             <div class="col-12 col-lg-4 mb-5">
                 <ul class="list-group">
                     <li class="list-group-item bg-blue text-white text-center heading-font">Latest Bluepoints</li>
-                    
+                    {% for bluepoint in recent_bluepoints %}
+                        <a href="{% url 'logbook' user_id=bluepoint.user.user_id %}">
+                            <li class="list-group-item text-black">
+                                <div class="row">
+                                    <div class="col-8">{{ bluepoint.user }}</div>
+                                    <div class="col-4 text-right">{{ bluepoint.grade }}</div>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

@@ -18,6 +18,10 @@ body {
     color: #fff;
 }
 
+.text-black {
+    color: #000;
+}
+
 /*----------- Fonts --*/
 
 .heading-font {
@@ -119,6 +123,12 @@ button.search-button {
 
 hr {
     border-color: rgba(0,0,0,.4);
+}
+
+/*------------ Home Page --*/
+
+ul.list-group a {
+    text-decoration-color: black;
 }
 
 /*------------ Media Queries --*/
