@@ -14,6 +14,10 @@ body {
     background-color: #163a9c;
 }
 
+.bg-red {
+    background-color: #b71c1c;
+}
+
 .text-white {
     color: #fff;
 }
@@ -127,6 +131,11 @@ hr {
 
 /*------------ Home Page --*/
 
+.youtube-iframe {
+    width: 280px;
+    height: 157px;
+}
+
 ul.list-group a {
     text-decoration-color: black;
 }
@@ -139,4 +148,11 @@ ul.list-group a {
         height: 60px;
     }
 
+}
+
+@media only screen and (min-width: 768px) {
+    .youtube-iframe {
+        width: 560px;
+        height: 315px;
+    }  
 }
