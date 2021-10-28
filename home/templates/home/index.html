@@ -5,6 +5,15 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-12 col-lg-8 mb-5">
+                <div class="card mb-4">
+                    <img src="{{ MEDIA_URL }}hero-image.jpg" class="card-img-top" alt="A happy belayer">
+                    <div class="card-body text-center">
+                      <p class="card-text">Climbers have been able to log outdoor routes they have completed for years on sites such as <a href="https://www.8a.nu/">8a.nu</a> and <a href="https://www.ukclimbing.com/">UKClimbing</a>. However, until now (we think), there has still been nowhere for them to log successful belays of other climbers on routes. Bluepoint has fixed this injustice by providing a place for climbers to log their most valuable of achievements: Bluepoints</p>
+                      <a href="#" class="btn bg-blue ">Log a bluepoint</a>
+                    </div>
+                </div>
+                <h4 class="heading-font text-center">Definitions</h4>
+                <hr>
                 <div class="accordion mb-4" id="definitions-accordion">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingRedpoint">
@@ -14,7 +23,7 @@
                       </h2>
                       <div id="collapseRedpoint" class="accordion-collapse collapse show" aria-labelledby="headingRedpoint" data-bs-parent="#definitions-accordion">
                         <div class="accordion-body">
-                            A sport climbing term to describe free-climbing a route on lead, after pre-practice of the route.
+                            A sport climbing term to describe free-climbing a route on lead, after pre-practice of the route. The term originated in Germany with the climber <a href="http://gullich.weebly.com/wolfgang-gullich-biography.html">Wolfgang Güllich</a>. He would paint a red dot under routes which he had <a href="https://en.wikipedia.org/wiki/Free_climbing">free climbed</a> during the beginnings of sport climbing in Germany.
                         </div>
                       </div>
                     </div>
@@ -24,13 +33,15 @@
                             Define: Bluepoint
                           </button>
                         </h2>
-                        <div id="collapseBluepoint" class="accordion-collapse collapse" aria-labelledby="headingBluepoint" data-bs-parent="#definitions-accordion">
+                        <div id="collapseBluepoint" class="accordion-collapse collapse show" aria-labelledby="headingBluepoint" data-bs-parent="#definitions-accordion">
                           <div class="accordion-body">
                             A belaying term to describe belaying someone on a successful redpoint ascent. True climbers and belayer know this deserves more credit than a redpoint.
                           </div>
                         </div>
                     </div>
                 </div>
+                <h4 class="heading-font text-center">Media</h4>
+                <hr>
                 <div class="card text-center">
                     <div class="card-body">
                         <p>A hero of the bluepointing game:</p>
@@ -41,6 +52,8 @@
                 </div>
             </div>
             <div class="col-12 col-lg-4 mb-5">
+                <h4 class="heading-font text-center">Stats</h4>
+                <hr>
                 <ul class="list-group">
                     <li class="list-group-item bg-blue text-white text-center heading-font">Latest Bluepoints</li>
                     {% for bluepoint in recent_bluepoints %}

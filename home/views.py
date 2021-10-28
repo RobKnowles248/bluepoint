@@ -1,4 +1,5 @@
 from django.shortcuts import render, reverse
+from django.conf import settings
 from logbooks.models import Bluepoint
 
 
@@ -11,6 +12,7 @@ def index(request):
     template = 'home/index.html'
     context = {
         'recent_bluepoints': recent_bluepoints,
+        'MEDIA_URL': settings.MEDIA_URL,
     }
 
     return render(request, template, context)
