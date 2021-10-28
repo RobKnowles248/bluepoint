@@ -43,6 +43,7 @@ body {
     line-height: 40px;
     font-size: 25px;
     vertical-align: middle;
+    margin-left: 10px;
 }
 
 .navbar-toggler {
@@ -51,6 +52,10 @@ body {
 
 .navbar-toggler:focus {
     outline: none;
+}
+
+li.nav-item {
+    padding-left: 10px;
 }
 
 /*------------ Messages --*/
@@ -113,8 +118,8 @@ input[type="submit"]:hover {
 /*------------ Searchbar --*/
 
 .input-group input.form-control.search-input {
-    border-top-right-radius: .25rem;
-    border-bottom-right-radius: .25rem;
+    border-top-right-radius: .25rem !important;
+    border-bottom-right-radius: .25rem !important;
 }
 
 button.search-button {
@@ -130,6 +135,12 @@ hr {
 }
 
 /*------------ Home Page --*/
+
+.accordion-button:focus {
+    z-index: auto;
+    box-shadow: none;
+    border: none;
+}
 
 .youtube-iframe {
     width: 280px;
@@ -154,5 +165,9 @@ ul.list-group a {
     .youtube-iframe {
         width: 560px;
         height: 315px;
-    }  
+    }
+
+    .navbar-expand-md .navbar-collapse {
+        justify-content: flex-end;
+    }
 }
