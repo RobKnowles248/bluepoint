@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
-from .functions import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade
+from .utils import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade
 
 
 def logbook(request, user_id):
