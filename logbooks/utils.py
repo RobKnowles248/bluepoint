@@ -15,9 +15,26 @@ def get_grades_dict():
     return grades_dict
 
 
+def get_grades_list():
+    """
+    Function to retrieve list of grades
+    """
+    grades = []
+    letters = ['a', 'b', 'c']
+    for i in range(1, 10):
+        if i < 6:
+            grades.append(str(i))
+            grades.append(str(i) + '+')
+        else:
+            for letter in letters:
+                grades.append(str(i) + letter)
+                grades.append(str(i) + letter + '+')
+    return grades
+
+
 def get_grades_tuple():
     """
-    Function to retrieve list of grades formatted for model
+    Function to retrieve tuple of grades formatted for model
     """
     # Get a list of climbing grades
     grades = []
@@ -89,3 +106,12 @@ def get_numbers_of_each_grade(sorted_bluepoints, max_number_of_grade):
             'percentage_of_max': percentage_of_max,
         }
     return numbers_of_each_grade
+
+
+def get_sort_grade(grade):
+    """
+    Get the number of the grade provided used for sorting
+    """
+    grades_list = get_grades_list()
+    sort_grade = grades_list.index(str(grade)) + 1
+    return sort_grade

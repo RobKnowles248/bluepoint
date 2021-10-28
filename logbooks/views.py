@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
-from .utils import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade
+from .utils import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade, get_sort_grade
 
 
 def logbook(request, username):
@@ -39,12 +39,14 @@ def add_bluepoint(request):
     """
     if request.method == "POST":
         logbook = get_object_or_404(Logbook, user=request.user)
+        sort_grade = get_sort_grade(request.POST['grade'])
         form_data = {
             'route_name': request.POST['route_name'],
             'crag_name': request.POST['crag_name'],
             'grade': request.POST['grade'],
             'comment': request.POST['comment'],
             'user': logbook,
+            'sort_grade': sort_grade,
         }
         form = BluepointForm(form_data)
         if form.is_valid():
@@ -73,12 +75,14 @@ def edit_bluepoint(request, bluepoint_id):
     bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
     if bluepoint in bluepoints:
         if request.method == 'POST':
+            sort_grade = get_sort_grade(request.POST['grade'])
             form_data = {
                 'route_name': request.POST['route_name'],
                 'crag_name': request.POST['crag_name'],
                 'grade': request.POST['grade'],
                 'comment': request.POST['comment'],
                 'user': user_logbook,
+                'sort_grade': sort_grade,
             }
             form = BluepointForm(
                 form_data, request.FILES, instance=bluepoint)

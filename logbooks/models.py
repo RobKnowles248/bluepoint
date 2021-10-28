@@ -26,6 +26,7 @@ class Bluepoint(models.Model):
     GRADES = get_grades_tuple()
     grade = models.CharField(
         max_length=4, choices=GRADES, null=False, blank=False)
+    sort_grade = models.IntegerField(null=False, blank=False)
     user = models.ForeignKey(
         'Logbook', null=False, blank=False, on_delete=models.CASCADE)
     comment = models.TextField(blank=True)
