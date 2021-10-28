@@ -9,16 +9,12 @@ from .forms import BluepointForm
 from .utils import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade
 
 
-def logbook(request, user_id):
+def logbook(request, username):
     """
     Display the user's logbook
     """
-    if user_id == 'my':
-        logbook = get_object_or_404(Logbook, user=request.user)
-        my_logbook = True
-    else:
-        logbook = get_object_or_404(Logbook, user_id=user_id)
-        my_logbook = False
+    logbook = Logbook.objects.get(user__username=username)
+    my_logbook = True
     bluepoints = Bluepoint.objects.all().filter(user=logbook)
     sorted_bluepoints = sort_bluepoints(bluepoints)
     max_number_of_grade = get_max_number_of_grade(sorted_bluepoints)
@@ -54,7 +50,7 @@ def add_bluepoint(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Bluepoint successfully added to your logbook')
-            return redirect(reverse('logbook', args=['my']))
+            return redirect(reverse('logbook', args=[request.user]))
         else:
             messages.error(request, 'Error submitting form')
     else:
@@ -90,7 +86,7 @@ def edit_bluepoint(request, bluepoint_id):
                 form.save()
                 messages.success(
                     request, 'Successfully updated bluepoint!')
-                return redirect(reverse('logbook', args=['my']))
+                return redirect(reverse('logbook', args=[request.user]))
             else:
                 messages.error(
                     request, 
@@ -122,12 +118,10 @@ def delete_bluepoint(request, bluepoint_id):
     Delete a bluepoint
     """
     bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
-    user_logbook = get_object_or_404(Logbook, user=request.user)
-    bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
-    if bluepoint in bluepoints:
+    if str(bluepoint.user) == str(request.user):
         bluepoint.delete()
         messages.success(request, 'Bluepoint successfully deleted!')
-        return redirect(reverse('logbook', args=['my']))
+        return redirect(reverse('logbook', args=[request.user]))
     else:
         messages.error(
             request, 'You do not have permission to delete that bluepoint!')
@@ -145,7 +139,6 @@ def search(request):
     if not query:
         messages.error(request, "You didn't enter any search criteria!")
         return redirect(reverse('home'))
-    # queries = Q(user__icontains=query)
     users = User.objects.filter(username__contains=query)
 
     template = 'logbooks/search.html'

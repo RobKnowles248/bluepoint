@@ -34,7 +34,7 @@
                 <ul class="list-group">
                     <li class="list-group-item bg-blue text-white text-center heading-font">Latest Bluepoints</li>
                     {% for bluepoint in recent_bluepoints %}
-                        <a href="{% url 'logbook' user_id=bluepoint.user.user_id %}">
+                        <a href="{% url 'logbook' username=bluepoint.user %}">
                             <li class="list-group-item text-black">
                                 <div class="row">
                                     <div class="col-8">{{ bluepoint.user }}</div>
