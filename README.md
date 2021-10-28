@@ -1,6 +1,6 @@
 <h1 align="center">Bluepoint</h1>
 
-[View the live project here.]()
+[View the live project here.](https://bluepoint-rob.herokuapp.com/)
 
 Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and [UKClimbing](https://www.ukclimbing.com/) where users create a logbook of outdoor climbs that they have completed. However, instead of logging successful climbs, users will log their successful belays of other climber's ascents. The term "bluepoint" is given to this by some climbers.
 
@@ -30,15 +30,13 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
         1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
         2. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
         3. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
-        4. As a donor, I want to receive an email confirmation after donating, to keep the donation confirmation in my records.
 
 -   ### Design
     -   #### Colour Scheme
         -   The two main colours used are blue and white.
     -   #### Typography
-        -   The Montserrat font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Montserrat is a clean font used frequently in programming, so it is both attractive and appropriate.
-    -   #### Imagery
-        -   Imagery is important. The large, background hero image is designed to be striking and catch the user's attention. It also has a modern, energetic aesthetic.
+        -   The Roboto font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly.
+        -   The heading use the Nunito font
 
 *   ### Wireframes
 
@@ -61,7 +59,7 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 
 ### Frameworks, Libraries & Programs Used
 
-1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
+1. [Bootstrap 5.1:](https://getbootstrap.com/)
     - Bootstrap was used to assist with the responsiveness and styling of the website.
 1. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the 'Roboto' and 'Nunito' fonts for use across the site.
@@ -88,10 +86,34 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
+-   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
 ### Testing User Stories from User Experience (UX) Section
+
+-   #### Viewing and Navigation
+
+    1. As a First Time Visitor, I want to easily understand the main purpose of the site so that I can decide if the site is for me.
+    2. As a site user, I want to be able to navigate easily to pages of the site, so that I can enjoy using the site.
+
+-   #### Registration and User Accounts
+
+    1. As a Site User, I want to be able to easily register for an account, so I can view my profile and log bluepoints.
+
+    2. As a Site User, I want to be able to easily login or logout, so I can access my profile and log bluepoints quickly.
+    3. As a Site User, I want to be able to easily recover my password if I forget it, so I am never locked out of my account.
+    4. As a Site User, I want to receive a confirmation email after registering, so that I can verify my registration was successful.
+    5. As a Site user, I want to have a logbook page, so that I can view and edit my existing bluepoints and personal details.
+
+-   #### Logging Bluepoints
+    1. As a logged in user, I want to be able to log my bluepoints, so that I can add to my logbook of bluepoints.
+    2. As a logged in user, I want to be able to see other users logbooks, so that I can compare with mine.
+    3. As a logged in user, I want to be able to add other users as friends, so that I can keep up to date with my friends' blupeoints.
+
+-   #### Donations
+    1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
+    2. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
+    3. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
 
 ### Further Testing
 
@@ -133,9 +155,13 @@ The site was deployed using the following steps:
 
 ### Code
 
+-   The basics of the project were created by following the Code Institute Boutique Ado walkthrough project and customised to suit the needs of the site.
+
 ### Content
 
 ### Media
+
+-   The homepage hero image was provided by Thomas Teece.
 
 ### Acknowledgements
 
