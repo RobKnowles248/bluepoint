@@ -5,20 +5,30 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-12 col-lg-8 mb-5">
-                <div class="card mb-3">
-                    <div class="card-header bg-red">
-                        <h4 class="heading-font mb-0 text-white">Redpoint:</h4>
+                <div class="accordion mb-4" id="definitions-accordion">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingRedpoint">
+                        <button class="accordion-button bg-red text-white heading-font" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRedpoint" aria-expanded="true" aria-controls="collapseRedpoint">
+                          Define: Redpoint
+                        </button>
+                      </h2>
+                      <div id="collapseRedpoint" class="accordion-collapse collapse show" aria-labelledby="headingRedpoint" data-bs-parent="#definitions-accordion">
+                        <div class="accordion-body">
+                            A sport climbing term to describe free-climbing a route on lead, after pre-practice of the route.
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-body">
-                        <p class="mb-0">"A sport climbing term to describe free-climbing a route on lead, after pre-practice of the route"</p>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="card-header bg-blue">
-                        <h4 class="heading-font mb-0 text-white">Bluepoint:</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="mb-0">"A belaying term to describe belaying someone on a successful redpoint ascent. True climbers and belayer know this deserves more credit than a redpoint."</p>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBluepoint">
+                          <button class="accordion-button bg-blue text-white heading-font" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBluepoint" aria-expanded="true" aria-controls="collapseBluepoint">
+                            Define: Bluepoint
+                          </button>
+                        </h2>
+                        <div id="collapseBluepoint" class="accordion-collapse collapse" aria-labelledby="headingBluepoint" data-bs-parent="#definitions-accordion">
+                          <div class="accordion-body">
+                            A belaying term to describe belaying someone on a successful redpoint ascent. True climbers and belayer know this deserves more credit than a redpoint.
+                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card text-center">
