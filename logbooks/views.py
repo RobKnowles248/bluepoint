@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
@@ -35,115 +36,102 @@ def logbook(request, user_id):
     return render(request, template, context)
 
 
+@login_required
 def add_bluepoint(request):
     """
     Add a new bluepoint to your logbook
     """
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            logbook = get_object_or_404(Logbook, user=request.user)
+    if request.method == "POST":
+        logbook = get_object_or_404(Logbook, user=request.user)
+        form_data = {
+            'route_name': request.POST['route_name'],
+            'crag_name': request.POST['crag_name'],
+            'grade': request.POST['grade'],
+            'comment': request.POST['comment'],
+            'user': logbook,
+        }
+        form = BluepointForm(form_data)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Bluepoint successfully added to your logbook')
+            return redirect(reverse('logbook', args=['my']))
+        else:
+            messages.error(request, 'Error submitting form')
+    else:
+        form = BluepointForm()
+    template = 'logbooks/add_bluepoint.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required()
+def edit_bluepoint(request, bluepoint_id):
+    """
+    Edit a bluepoint
+    """
+    bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
+    user_logbook = get_object_or_404(Logbook, user=request.user)
+    bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
+    if bluepoint in bluepoints:
+        if request.method == 'POST':
             form_data = {
                 'route_name': request.POST['route_name'],
                 'crag_name': request.POST['crag_name'],
                 'grade': request.POST['grade'],
                 'comment': request.POST['comment'],
-                'user': logbook,
+                'user': user_logbook,
             }
-            form = BluepointForm(form_data)
+            form = BluepointForm(
+                form_data, request.FILES, instance=bluepoint)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Bluepoint successfully added to your logbook')
+                messages.success(
+                    request, 'Successfully updated bluepoint!')
                 return redirect(reverse('logbook', args=['my']))
             else:
-                messages.error(request, 'Error submitting form')
+                messages.error(
+                    request, 
+                    'Failed to update bluepoint. Please check the form!'
+                )
         else:
-            form = BluepointForm()
-        template = 'logbooks/add_bluepoint.html'
+            form = BluepointForm(instance=bluepoint)
+            messages.info(
+                request, 
+                f'You are editing your bluepoint of {bluepoint.route_name}'
+            )
+
+        template = 'logbooks/edit_bluepoint.html'
         context = {
             'form': form,
+            'bluepoint': bluepoint,
         }
 
         return render(request, template, context)
     else:
-        messages.info(request, 'Please log in to add a bluepoint')
-        return redirect(reverse('account_login'))
-
-
-def edit_bluepoint(request, bluepoint_id):
-    """
-    Edit a bluepoint
-    """
-    if request.user.is_authenticated:
-        bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
-        user_logbook = get_object_or_404(Logbook, user=request.user)
-        bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
-        if bluepoint in bluepoints:
-            if request.method == 'POST':
-                form_data = {
-                    'route_name': request.POST['route_name'],
-                    'crag_name': request.POST['crag_name'],
-                    'grade': request.POST['grade'],
-                    'comment': request.POST['comment'],
-                    'user': user_logbook,
-                }
-                form = BluepointForm(
-                    form_data, request.FILES, instance=bluepoint)
-                if form.is_valid():
-                    form.save()
-                    messages.success(
-                        request, 'Successfully updated bluepoint!')
-                    return redirect(reverse('logbook', args=['my']))
-                else:
-                    messages.error(
-                        request, 
-                        'Failed to update bluepoint. Please check the form!'
-                    )
-            else:
-                form = BluepointForm(instance=bluepoint)
-                messages.info(
-                    request, 
-                    f'You are editing your bluepoint of {bluepoint.route_name}'
-                )
-
-            template = 'logbooks/edit_bluepoint.html'
-            context = {
-                'form': form,
-                'bluepoint': bluepoint,
-            }
-
-            return render(request, template, context)
-        else:
-            messages.error(
-                request, 'You do not have permission to edit that bluepoint!')
-            return redirect(reverse('home'))
-    else:
         messages.error(
-            request, 'You are not logged in!'
-        )
-        return redirect(reverse('account_login'))
+            request, 'You do not have permission to edit that bluepoint!')
+        return redirect(reverse('home'))
 
 
+@login_required
 def delete_bluepoint(request, bluepoint_id):
     """
-    Edit a bluepoint
+    Delete a bluepoint
     """
-    if request.user.is_authenticated:
-        bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
-        user_logbook = get_object_or_404(Logbook, user=request.user)
-        bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
-        if bluepoint in bluepoints:
-            bluepoint.delete()
-            messages.success(request, 'Bluepoint successfully deleted!')
-            return redirect(reverse('logbook', args=['my']))
-        else:
-            messages.error(
-                request, 'You do not have permission to delete that bluepoint!')
-            return redirect(reverse('home'))
+    bluepoint = get_object_or_404(Bluepoint, id=bluepoint_id)
+    user_logbook = get_object_or_404(Logbook, user=request.user)
+    bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
+    if bluepoint in bluepoints:
+        bluepoint.delete()
+        messages.success(request, 'Bluepoint successfully deleted!')
+        return redirect(reverse('logbook', args=['my']))
     else:
         messages.error(
-            request, 'You are not logged in!'
-        )
-        return redirect(reverse('account_login'))
+            request, 'You do not have permission to delete that bluepoint!')
+        return redirect(reverse('home'))
 
 
 def search(request):
