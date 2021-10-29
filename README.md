@@ -24,7 +24,7 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
     -   #### Logging Bluepoints
         1. As a logged in user, I want to be able to log my bluepoints, so that I can add to my logbook of bluepoints.
         2. As a logged in user, I want to be able to see other users logbooks, so that I can compare with mine.
-        3. As a logged in user, I want to be able to add other users as friends, so that I can keep up to date with my friends' blupeoints.
+        3. As a logged in user, I want to be able to search for other users to compare their logbooks to mine.
 
     -   #### Donations
         1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
@@ -91,24 +91,33 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Testing User Stories from User Experience (UX) Section
 
+Screenshots of the parts of the finished site that satisfy the user stories:
+
 -   #### Viewing and Navigation
 
     1. As a First Time Visitor, I want to easily understand the main purpose of the site so that I can decide if the site is for me.
+    ![Site purpose](/media/screenshots/site_purpose.png)
     2. As a site user, I want to be able to navigate easily to pages of the site, so that I can enjoy using the site.
 
 -   #### Registration and User Accounts
 
     1. As a Site User, I want to be able to easily register for an account, so I can view my profile and log bluepoints.
-
+    ![Signup page](/media/screenshots/signup.png)
     2. As a Site User, I want to be able to easily login or logout, so I can access my profile and log bluepoints quickly.
+    ![Login page](/media/screenshots/login.png)
+    ![Logout page](/media/screenshots/logout.png)
     3. As a Site User, I want to be able to easily recover my password if I forget it, so I am never locked out of my account.
+    ![Reset password page](/media/screenshots/reset_password.png)
     4. As a Site User, I want to receive a confirmation email after registering, so that I can verify my registration was successful.
     5. As a Site user, I want to have a logbook page, so that I can view and edit my existing bluepoints and personal details.
+    ![Logbook page](/media/screenshots/logbook.png)
 
 -   #### Logging Bluepoints
     1. As a logged in user, I want to be able to log my bluepoints, so that I can add to my logbook of bluepoints.
+    ![Log a bluepoint page](/media/screenshots/log.png)
     2. As a logged in user, I want to be able to see other users logbooks, so that I can compare with mine.
-    3. As a logged in user, I want to be able to add other users as friends, so that I can keep up to date with my friends' blupeoints.
+    ![Other user's logbook](/media/screenshots/robs_logbook.png)
+    3. As a logged in user, I want to be able to search for other users to compare their logbooks to mine.
 
 -   #### Donations
     1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
