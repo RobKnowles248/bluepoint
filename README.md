@@ -6,6 +6,15 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 
 ## User Experience (UX)
 
+-   ### Primary Goals
+
+    To create a site similar to the inspirations for this where climbers can keep a logbook of climbs that they have belayed other people on rather than climbs they have done themselves.
+
+-   ### Developer Goals
+
+    -   To gain experience using the Django framework to build a full stack application.
+    -   To create a site where friends of the developer and other climbers can log their "bluepoints".
+
 -   ### User stories
 
     -   #### Viewing and Navigation
@@ -38,7 +47,7 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
         -   The Roboto font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly.
         -   The heading use the Nunito font
 
-*   ### Wireframes
+-   ### Wireframes
 
     -   Home Page Wireframe - [View](wireframes/home-page.pdf)
 
@@ -89,6 +98,10 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 -   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
+### Testing responsiveness
+
+
+
 ### Testing User Stories from User Experience (UX) Section
 
 Screenshots of the parts of the finished site that satisfy the user stories:
@@ -124,7 +137,85 @@ Screenshots of the parts of the finished site that satisfy the user stories:
     2. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
     3. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
 
-### Further Testing
+### Testing Home App
+
+The home app was tested using a number of manual tests detailed below.
+
+-   #### Accordions
+
+    -   Accordions on the home page were opened and close to ensure they were working as intended
+    ![Accordions](/media/screenshots/accordions.png)
+
+-   #### Recent Bluepoints
+
+    -   More than 10 bluepoints were logged to check that only 10 showed
+    ![Recent Bluepoints](/media/screenshots/recent-bluepoints.png)
+    -   Some new bluepoints were logged to check that the climbs were ordered by most recent (they came up at the top)
+    -   The links were clicked to check they led to the right logbook
+
+-   #### Top Bluepoints
+
+    -   More than 10 bluepoints were logged to check that only 10 showed
+    ![Top Bluepoints](/media/screenshots/top-bluepoints.png)
+    -   Some bluepoints of various grades were logged to check that the list was ordered by grade
+    -   The links were clicked to check they led to the right logbook
+
+### Testing Donate App
+
+The donate app was tested using a number of manual tests detailed below.
+
+-   #### Donation Form
+
+-   #### Payment Form
+
+### Testing Logbooks App
+
+The logbooks app was tested using a number of manual tests detailed below.
+
+-   #### Logbook Page
+
+    -   The "My Logbook" button was clicked and the user was taken to the correct logbook.
+    -   Multiple bluepoints were logged to check that the pyramid and logbook were updated and ordered correctly with the correct info.
+    ![Pyramid](/media/screenshots/pyramid.png)
+    ![Logs](/media/screenshots/logs.png)
+    -   All buttons on the logbook page were clicked to check they led to the right place
+    ![Logbook](/media/screenshots/logbook.png)
+
+-   #### Log Bluepoint Form
+
+    -   The add_bluepoint buttons in the navigation, homepage and logbook pages were all clicked and led to the correct page
+    -   The form was submitted without a route name to check it would not submit
+    ![No route name](/media/screenshots/no-route-name.png)
+    -   The form was submitted without a grade to check it would not submit
+    ![No grade](/media/screenshots/no-grade.png)
+    -   The form was submitted correctly to check and the bluepoint was added to the correct user's logbook with a success message
+    ![Logged bluepoint](/media/screenshots/log-bluepoint.png)
+    -   I attempted to access the add_bluepoint url manually without being logged in and was redirected to the log in page and then the add_bluepoint page after logging in 
+    ![Add bluepoint redirect](/media/screenshots/add-bluepoint-redirect.png)
+    ![Add bluepoint redirect 2](/media/screenshots/add-bluepoint-redirect-2.png)
+
+-   #### Edit Bluepoint Form
+
+    -   The edit button on a bluepoint in the logbook was clicked and it led to the edit bluepoint page for the correct bluepoint
+    -   The form was submitted without a route name to check it would not submit
+    ![No route name](/media/screenshots/no-route-name.png)
+    -   The form was submitted without a grade to check it would not submit
+    ![No grade](/media/screenshots/no-grade.png)
+    -   The form was submitted correctly to check and the bluepoint was changing correctly in the correct user's logbook with a success message
+    ![Edit bluepoint success](/media/screenshots/edit-bluepoint.png)
+    -   I attempted to access the edit_bluepoint url manually without being logged in and was redirected to the log in page and then the        edit_bluepoint page after logging in.
+    ![Edit bluepoint redirect](/media/screenshots/edit-bluepoint-redirect.png)
+    -   I attempted to access the edit_bluepoint url of a bluepoint that was not mine and was redirected to the homepage with an error message
+    ![Edit bluepoint not allowed](/media/screenshots/edit-bluepoint-not-allowed.png)
+
+-   #### Delete Bluepoint
+
+    -   The delete bluepoint button in the logbook was clicked and it deleted the correct bluepoint
+    ![Delete bluepoint success](/media/screenshots/delete-bluepoint.png)
+    -   I attempted to access the delete_bluepoint url of a bluepoint that was not mine and was redirected to the homepage with an error message
+    ![Delete bluepoint not allowed](/media/screenshots/delete-bluepoint-not-allowed.png)  
+
+-   #### Search Form
 
 ### Known Bugs
 
@@ -167,6 +258,8 @@ The site was deployed using the following steps:
 -   The basics of the project were created by following the Code Institute Boutique Ado walkthrough project and customised to suit the needs of the site.
 
 ### Content
+
+-   The site was inspired by the sites [8a.nu](https://www.8a.nu/) and [UKClimbing](https://www.ukclimbing.com/)
 
 ### Media
 
