@@ -149,7 +149,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Testing responsiveness
 
-
+The site responsiveness was tested using the Google Chrome developer tools.
 
 ### Testing User Stories from User Experience (UX) Section
 
