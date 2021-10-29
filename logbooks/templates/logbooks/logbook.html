@@ -24,7 +24,7 @@
                             <div class="col-2 text-right">{{ grade }}:</div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div class="progress-bar bg-blue w-{{ data.percentage }}" role="progressbar" aria-valuenow="{{ data.number }}" aria-valuemin="0" aria-valuemax="{{ max_number_of_grade }}" >{{ data.number }}</div>
+                                    <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="{{ data.number }}" aria-valuemin="0" aria-valuemax="{{ max_number_of_grade }}" style="width: {{ data.percentage }}%">{{ data.number }}</div>
                                 </div>
                             </div>
                         </div>
