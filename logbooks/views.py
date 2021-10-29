@@ -1,12 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
-from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
-from .utils import sort_bluepoints, get_max_number_of_grade, get_numbers_of_each_grade, get_sort_grade
+from .utils import get_sort_grade, get_logbook_data
 
 
 def logbook(request, username):
@@ -16,17 +15,16 @@ def logbook(request, username):
     logbook = Logbook.objects.get(user__username=username)
     my_logbook = (str(request.user) == username)
     bluepoints = Bluepoint.objects.all().filter(user=logbook)
-    sorted_bluepoints = sort_bluepoints(bluepoints)
-    max_number_of_grade = get_max_number_of_grade(sorted_bluepoints)
-    numbers_of_each_grade = get_numbers_of_each_grade(
-        sorted_bluepoints, max_number_of_grade)
+    logbook_data = get_logbook_data(bluepoints)
+    sorted_bluepoints = logbook_data['sorted_bluepoints']
+    max_number_of_grade = logbook_data['max_number_of_grade']
+
     template = 'logbooks/logbook.html'
     context = {
         'logbook': logbook,
         'my_logbook': my_logbook,
         'sorted_bluepoints': sorted_bluepoints,
-        'max_number_of_grade': max_number_of_grade,
-        'numbers_of_each_grade': numbers_of_each_grade,
+        'max_number_of_grade': max_number_of_grade
     }
 
     return render(request, template, context)

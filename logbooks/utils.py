@@ -1,23 +1,6 @@
-def get_grades_dict():
-    """
-    Return a reverse orders dictionary of grades with empty lists attached
-    """
-    grades_dict = {}
-    letters = ['c', 'b', 'a']
-    for i in range(10, 0, -1):
-        if i < 6:
-            grades_dict[str(i) + '+'] = []
-            grades_dict[str(i)] = []
-        else:
-            for letter in letters:
-                grades_dict[str(i) + letter + '+'] = []
-                grades_dict[str(i) + letter] = []
-    return grades_dict
-
-
 def get_grades_list():
     """
-    Function to retrieve list of grades
+    Function to retrieve list of grades for get_sort_grade function
     """
     grades = []
     letters = ['a', 'b', 'c']
@@ -52,60 +35,35 @@ def get_grades_tuple():
     return grades_tuple
 
 
-def sort_bluepoints(bluepoints):
+def get_logbook_data(bluepoints):
     """
-    Sorts a list of bluepoints to return a dictionary of bluepoints by grade
-    in the correct order
+    Return a dictionary containing a sorted dictionary of bluepoints 
+    by grade and the max number of bluepoints for any grade
+    for use in the logbook template
     """
-    # Add bluepoint objects to their corresponding grade in the dict
-    grades_dict = get_grades_dict()
-    for bluepoint in bluepoints:
-        for key in grades_dict:
-            if bluepoint.grade == key:
-                bluepoint_object = {
-                    'route_name': bluepoint.route_name,
-                    'crag_name': bluepoint.crag_name,
-                    'grade': bluepoint.grade,
-                    'comment': bluepoint.comment,
-                    'id': bluepoint.id,
-                }
-                grades_dict[key].append(bluepoint_object)
-    # Remove entries for empty grades
-    empty_grades = []
-    for key in grades_dict:
-        if len(grades_dict[key]) == 0:
-            empty_grades.append(key)
-    for grade in empty_grades:
-        grades_dict.pop(grade)
-    return grades_dict
-
-
-def get_max_number_of_grade(sorted_bluepoints):
-    """
-    Get the max number of bluepoints at any grade for a user
-    """
+    sorted_bluepoints = {}
+    bluepoints = bluepoints.order_by('sort_grade').reverse()
     max_number_of_grade = 0
-    for bluepoints in sorted_bluepoints.values():
-        if len(bluepoints) > max_number_of_grade:
-            max_number_of_grade = len(bluepoints)
-    return max_number_of_grade
-
-
-def get_numbers_of_each_grade(sorted_bluepoints, max_number_of_grade):
-    """
-    Get a dictionary of the number of bluepoints at each grade
-    plus the percentage of the that number compared to the max
-    number at any grade
-    """
-    numbers_of_each_grade = {}
-    for grade, bluepoints in sorted_bluepoints.items():
-        number_of_bluepoints = len(bluepoints)
-        percentage_of_max = (number_of_bluepoints * 100) // max_number_of_grade
-        numbers_of_each_grade[grade] = {
-            'number_of_bluepoints': number_of_bluepoints,
-            'percentage_of_max': percentage_of_max,
-        }
-    return numbers_of_each_grade
+    for bluepoint in bluepoints:
+        grade = bluepoint.grade
+        if grade in sorted_bluepoints.keys():
+            sorted_bluepoints[grade]['bluepoints'].append(bluepoint)
+            sorted_bluepoints[grade]['number'] += 1
+            if sorted_bluepoints[grade]['number'] > max_number_of_grade:
+                max_number_of_grade = sorted_bluepoints[grade]['number']
+        else:
+            sorted_bluepoints[grade] = {
+                'bluepoints': [bluepoint],
+                'number': 1
+            }
+            if max_number_of_grade == 0:
+                max_number_of_grade = 1
+    for data in sorted_bluepoints.values():
+        data['percentage'] = (data['number'] * 100) // max_number_of_grade
+    return {
+        'sorted_bluepoints': sorted_bluepoints,
+        'max_number_of_grade': max_number_of_grade
+    }
 
 
 def get_sort_grade(grade):

@@ -15,16 +15,16 @@
 {% block content %}
     <div class="container mt-3">
         <div class="row">
-            {% if numbers_of_each_grade|length > 0 %}
+            {% if sorted_bluepoints|length > 0 %}
                 <div class="col-12 col-lg-4">
                     <h4 class="heading-font text-center">Pyramid</h4>
                     <hr>
-                    {% for grade, values in numbers_of_each_grade.items %}
+                    {% for grade, data in sorted_bluepoints.items %}
                         <div class="row">
                             <div class="col-2 text-right">{{ grade }}:</div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div class="progress-bar bg-blue w-{{ values.percentage_of_max }}" role="progressbar" aria-valuenow="{{ values.number_of_bluepoints }}" aria-valuemin="0" aria-valuemax="{{ max_number_of_grade }}" >{{ values.number_of_bluepoints }}</div>
+                                    <div class="progress-bar bg-blue w-{{ data.percentage }}" role="progressbar" aria-valuenow="{{ data.number }}" aria-valuemin="0" aria-valuemax="{{ max_number_of_grade }}" >{{ data.number }}</div>
                                 </div>
                             </div>
                         </div>
@@ -36,9 +36,9 @@
                 <h4 class="heading-font">Logs</h4>
                 <hr>
                 <ul class="list-group">
-                    {% for grade, bluepoints in sorted_bluepoints.items %}
+                    {% for grade, data in sorted_bluepoints.items %}
                         <li class="list-group-item bg-blue text-white text-center">{{ grade }}</li>
-                        {% for bluepoint in bluepoints %}
+                        {% for bluepoint in data.bluepoints %}
                             <li class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-lg-3 text-center">
