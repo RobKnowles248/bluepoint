@@ -19,15 +19,14 @@
                 <p>Pay securely here:</p>
                 <form action="{% url 'pay' donation_number=donation_number %}" method="POST" id='payment-form'>
                     {% csrf_token %}
-                    <div class="mb-2" id="card-element">
+                    <div class="mb-2 form-control py-2" id="card-element">
                         <!-- Stripe will create a card element here -->
                     </div>
                     <div class="mb-2 text-danger" id="card-errors" role="alert">
-                        <!-- Stipe error messages will display here -->
                     </div>
                     <div class="submit-button-container mt-4 mb-2 text-right">
                         <button id="submit-button" class="btn btn-black">
-                            <span>Pay <i class="fas fa-lock"></i></span>
+                            <span>Pay Securely <i class="fas fa-lock"></i></span>
                         </button>
                     </div>
                 </form>
