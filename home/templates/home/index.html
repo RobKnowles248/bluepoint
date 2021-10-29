@@ -54,7 +54,7 @@
             <div class="col-12 col-lg-4 mb-5">
                 <h4 class="heading-font text-center">Stats</h4>
                 <hr>
-                <ul class="list-group">
+                <ul class="list-group mb-4">
                     <li class="list-group-item bg-blue text-white text-center heading-font">Latest Bluepoints</li>
                     {% for bluepoint in recent_bluepoints %}
                         <a href="{% url 'logbook' username=bluepoint.user %}">
