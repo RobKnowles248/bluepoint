@@ -14,7 +14,7 @@ def logbook(request, username):
     Display the user's logbook
     """
     logbook = Logbook.objects.get(user__username=username)
-    my_logbook = True
+    my_logbook = (str(request.user) == username)
     bluepoints = Bluepoint.objects.all().filter(user=logbook)
     sorted_bluepoints = sort_bluepoints(bluepoints)
     max_number_of_grade = get_max_number_of_grade(sorted_bluepoints)

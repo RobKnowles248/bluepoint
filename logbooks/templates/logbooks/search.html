@@ -22,7 +22,7 @@
                     <ul class="list-group text-center">
                         {% for user in users %}
                             <li class="list-group-item">
-                                <a href="{% url 'logbook' user_id=user.id %}">{{ user.username }}</a>
+                                <a href="{% url 'logbook' username=user.username %}">{{ user.username }}</a>
                             </li>
                         {% endfor %}
                     </ul>
