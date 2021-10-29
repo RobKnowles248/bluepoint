@@ -49,6 +49,7 @@ def add_bluepoint(request):
         form = BluepointForm(form_data)
         if form.is_valid():
             form.save()
+            
             messages.success(request, 'Bluepoint successfully added to your logbook')
             return redirect(reverse('logbook', args=[request.user]))
         else:
