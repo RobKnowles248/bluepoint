@@ -300,6 +300,18 @@ The logbooks app was tested using a number of manual tests detailed below.
     -   Submitted the search form with a random query and found no users
     ![Search no results](/media/screenshots/search-no-results.png)  
 
+### Bugs
+
+-   #### Server error on donating too much
+    
+    -   While testing the donation form, on inputting 10000000 as the donation amount, the form was able to be submitted but there was an internal server error.
+    ![Screenshot of erroring input amount](/media/screenshots/donation-amount-error-1.png)  
+    ![Screenshot of error 500](/media/screenshots/donation-amount-error-2.png)  
+    -   This was because 10000000 was more than the maximum allowed amount of a payment intent by stripe but was allowed by the form validation as was less than the max number of digits for the donation_amount field.
+    -   This was fixed by lower the max number of digits for the donation_amount field from 10 to 8 so the form could not be submitted with this donation amount.
+    ![Screenshot of changed max digits in donation_amount field](/media/screenshots/donation-amount-error-3.png)  
+    ![Screenshot of form validation](/media/screenshots/donation-amount-error-3.png)  
+
 ## Deployment
 
 The site was deployed using the following steps:

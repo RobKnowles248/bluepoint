@@ -13,7 +13,7 @@ class Donation(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     donation_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, null=False, default=0)
+        max_digits=8, decimal_places=2, null=False, default=0)
     paid = models.BooleanField(null=False, blank=False, default=False)
 
     def _generate_donation_number(self):
