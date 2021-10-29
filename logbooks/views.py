@@ -145,7 +145,7 @@ def search(request):
     if not query:
         messages.error(request, "You didn't enter any search criteria!")
         return redirect(reverse('home'))
-    users = User.objects.filter(username__contains=query)
+    users = User.objects.filter(username__icontains=query)
     logbooks = []
     for user in users:
         logbook = get_object_or_404(Logbook, user=user)
