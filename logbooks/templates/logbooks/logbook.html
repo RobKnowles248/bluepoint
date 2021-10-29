@@ -3,9 +3,12 @@
 
 {% block page_header %}
     <div class="container mt-3">
-        <div class="row">
+        <div class="row text-center">
             <div class="col-12">
-                <h2 class="heading-font text-center">{% if my_logbook %}My Logbook{% else %}{{ logbook }}'s Logbook{% endif %}</h2>
+                <h2 class="heading-font">{% if my_logbook %}My Logbook{% else %}{{ logbook }}'s Logbook{% endif %}</h2>
+                {% if logbook.max_bluepoint %}
+                    <h5>Max Bluepoint: {{ logbook.max_bluepoint }}</h4>
+                {% endif %}
                 <hr>
             </div>
         </div>

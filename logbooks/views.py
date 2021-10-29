@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Logbook, Bluepoint
 from .forms import BluepointForm
-from .utils import get_sort_grade, get_logbook_data
+from .utils import get_sort_grade, get_logbook_data, update_max_bluepoint
 
 
 def logbook(request, username):
@@ -49,7 +49,8 @@ def add_bluepoint(request):
         form = BluepointForm(form_data)
         if form.is_valid():
             form.save()
-            
+            bluepoints = Bluepoint.objects.all().filter(user=logbook)
+            update_max_bluepoint(logbook, bluepoints)
             messages.success(request, 'Bluepoint successfully added to your logbook')
             return redirect(reverse('logbook', args=[request.user]))
         else:
@@ -87,6 +88,8 @@ def edit_bluepoint(request, bluepoint_id):
                 form_data, request.FILES, instance=bluepoint)
             if form.is_valid():
                 form.save()
+                bluepoints = Bluepoint.objects.all().filter(user=user_logbook)
+                update_max_bluepoint(user_logbook, bluepoints)
                 messages.success(
                     request, 'Successfully updated bluepoint!')
                 return redirect(reverse('logbook', args=[request.user]))

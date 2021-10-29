@@ -73,3 +73,15 @@ def get_sort_grade(grade):
     grades_list = get_grades_list()
     sort_grade = grades_list.index(str(grade)) + 1
     return sort_grade
+
+
+def update_max_bluepoint(logbook, bluepoints):
+    """
+    Compute and update the max bluepoint for a logbook
+    """
+    if len(bluepoints) > 0:
+        max_bluepoint_object = bluepoints.order_by('sort_grade').reverse()[0]
+        max_bluepoint = max_bluepoint_object.grade
+        logbook.max_bluepoint = max_bluepoint
+        logbook.save()
+    return
