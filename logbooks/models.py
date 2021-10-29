@@ -31,7 +31,6 @@ class Bluepoint(models.Model):
     comment = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     climber = models.CharField(max_length=254, null=True, blank=True)
-    max_bluepoint = models.CharField(max_length=4, null=True, blank=True)
 
 
 @receiver(post_save, sender=User)
