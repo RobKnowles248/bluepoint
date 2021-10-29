@@ -184,8 +184,11 @@ Screenshots of the parts of the finished site that satisfy the user stories:
 
 -   #### Donations
     1. As a donor, I want to be able to easily enter my payment information, so that I can donate quickly and easily.
+    ![Payment page](/media/screenshots/payment.png)  
     2. As a donor, I want to know that my payment details are secure, so that I can pay confidently.
+    ![Payment page](/media/screenshots/payment.png)  
     3. As a donor, I want to see confirmation after I have donated, to know my donation was successful.
+    ![Payment confirmation page](/media/screenshots/donation-successful.png)  
 
 ### Testing Home App
 
@@ -216,7 +219,30 @@ The donate app was tested using a number of manual tests detailed below.
 
 -   #### Donation Form
 
+    -   Tried to submit the form without the full name field and it would not submit
+    ![No full name](/media/screenshots/donate-no-full-name.png)
+    -   Tried to submit the form without the email address field and it would not submit
+    ![No email](/media/screenshots/donate-no-email.png)
+    -   On submitting the form, was redirected to the payment page
+    ![Payment page](/media/screenshots/payment.png)  
+    -   On submitting the form, a donation object was created with a paid variable of false
+    ![Created donation in admin](/media/screenshots/donation-created.png)  
+    -   On submitting the form, a payment intent was created in Stripe
+    ![Payment intent created](/media/screenshots/payment-intent-created.png)  
+
 -   #### Payment Form
+
+    -   Tried to submit the form without any card details and it would not submit
+    ![No card details](/media/screenshots/no-card-details.png)  
+    -   Typed an invalid card number and was informed of this and submit button was disabled
+    ![Invalid card number](/media/screenshots/invalid-card.png)  
+    -   Used the stripe test card to submit the form and was redirected the success page
+    ![Stripe test card](/media/screenshots/stripe-test-card.png)  
+    ![Donation success](/media/screenshots/donation-successful.png)  
+    -   After successful payment the donation was marked as paid in the admin
+    ![Donation paid in admin](/media/screenshots/donation-paid.png)  
+    -   After successful payment the donation was marked as paid in stripe
+    ![Stripe payment success](/media/screenshots/stripe-payment-success.png)  
 
 ### Testing Logbooks App
 
@@ -266,6 +292,11 @@ The logbooks app was tested using a number of manual tests detailed below.
     ![Delete bluepoint not allowed](/media/screenshots/delete-bluepoint-not-allowed.png)  
 
 -   #### Search Form
+
+    -   Submitted the search form with a user's name as the search term and found that user which the link directing to the correct user logbook
+    ![Search success](/media/screenshots/search-success.png)  
+    -   Submitted the search form with a random query and found no users
+    ![Search no results](/media/screenshots/search-no-results.png)  
 
 ## Deployment
 
