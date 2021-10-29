@@ -146,10 +146,14 @@ def search(request):
         messages.error(request, "You didn't enter any search criteria!")
         return redirect(reverse('home'))
     users = User.objects.filter(username__contains=query)
+    logbooks = []
+    for user in users:
+        logbook = get_object_or_404(Logbook, user=user)
+        logbooks.append(logbook)
 
     template = 'logbooks/search.html'
     context = {
-        'users': users,
+        'logbooks': logbooks,
         'query': query
     }
 

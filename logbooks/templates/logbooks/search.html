@@ -16,14 +16,25 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                {% if users|length == 0 %}
-                    <p class="text-center">No users found matching that query!</p>
+                {% if logbooks|length == 0 %}
+                    <p class="text-center">No logbooks found matching that query!</p>
                 {% else %}
                     <ul class="list-group text-center">
-                        {% for user in users %}
-                            <li class="list-group-item">
-                                <a href="{% url 'logbook' username=user.username %}">{{ user.username }}</a>
-                            </li>
+                        {% for logbook in logbooks %}
+                            <a href="{% url 'logbook' username=logbook.user %}">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-{% if logbook.max_bluepoint %}6{% else %}12{% endif %}">
+                                            {{ logbook.user }}
+                                        </div>
+                                        {% if logbook.max_bluepoint %}
+                                            <div class="col-6">
+                                                Max Bluepoint: {{ logbook.max_bluepoint }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            </a>
                         {% endfor %}
                     </ul>
                 {% endif %}
