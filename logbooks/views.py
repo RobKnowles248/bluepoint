@@ -40,7 +40,7 @@ def add_bluepoint(request):
         sort_grade = get_sort_grade(request.POST['grade'])
         form_data = {
             'route_name': request.POST['route_name'],
-            'crag_name': request.POST['crag_name'],
+            'climber': request.POST['climber'],
             'grade': request.POST['grade'],
             'comment': request.POST['comment'],
             'user': logbook,
@@ -76,7 +76,7 @@ def edit_bluepoint(request, bluepoint_id):
             sort_grade = get_sort_grade(request.POST['grade'])
             form_data = {
                 'route_name': request.POST['route_name'],
-                'crag_name': request.POST['crag_name'],
+                'climber': request.POST['climber'],
                 'grade': request.POST['grade'],
                 'comment': request.POST['comment'],
                 'user': user_logbook,
