@@ -55,7 +55,22 @@ Bluepoint is a site similar to climbing websites [8a.nu](https://www.8a.nu/) and
 
 ## Features
 
+-   ### Existing Features
 
+    -   Home page with info about the site.
+    -   Login and signup functionality for users of the site.
+    -   Functionality for users to add edit and delete bluepoints for their logbook.
+    -   A logbook page where users can view all of their bluepoints sorted by grade.
+    -   A searchbar where users can search for the logbooks of other users.
+    -   A list of the 10 most recently logged bluepoints on the homepage.
+    -   A list of the 10 highest graded bluepoints on the homepage.
+    -   A donation page where users of the site can donate to support the development of the site.
+    -   Integration with Stripe to take payments securely from users when they donate.
+
+-   ### Future Potential Features to Implement
+
+    -   The ability for users to make their logbooks private.
+    -   Tying the "climber" field in the bluepoint model to another user of the site if the climber is also a user of the site.
 
 ## Technologies Used
 
@@ -111,6 +126,7 @@ Screenshots of the parts of the finished site that satisfy the user stories:
     1. As a First Time Visitor, I want to easily understand the main purpose of the site so that I can decide if the site is for me.
     ![Site purpose](/media/screenshots/site_purpose.png)
     2. As a site user, I want to be able to navigate easily to pages of the site, so that I can enjoy using the site.
+    ![Navigation](/media/screenshots/navigation.png)
 
 -   #### Registration and User Accounts
 
@@ -216,8 +232,6 @@ The logbooks app was tested using a number of manual tests detailed below.
     ![Delete bluepoint not allowed](/media/screenshots/delete-bluepoint-not-allowed.png)  
 
 -   #### Search Form
-
-### Known Bugs
 
 ## Deployment
 
