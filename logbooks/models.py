@@ -22,7 +22,6 @@ class Bluepoint(models.Model):
     A model for a log of a bluepoint by a user
     """
     route_name = models.CharField(max_length=254, null=False, blank=False)
-    crag_name = models.CharField(max_length=254, null=False, blank=False)
     GRADES = get_grades_tuple()
     grade = models.CharField(
         max_length=4, choices=GRADES, null=False, blank=False)
@@ -31,6 +30,7 @@ class Bluepoint(models.Model):
         'Logbook', null=False, blank=False, on_delete=models.CASCADE)
     comment = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    climber = models.CharField(max_length=254, null=True, blank=True)
 
 
 @receiver(post_save, sender=User)

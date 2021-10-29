@@ -20,7 +20,7 @@
                 <form action="{% url 'add_bluepoint' %}" method="POST" id='bluepoint-form'>
                     {% csrf_token %}
                     {{ form.route_name | as_crispy_field }}
-                    {{ form.crag_name | as_crispy_field }}
+                    {{ form.climber | as_crispy_field }}
                     {{ form.grade | as_crispy_field }}
                     {{ form.comment | as_crispy_field }}
                     <div class="text-center mb-4">
